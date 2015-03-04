@@ -91,10 +91,12 @@ func TestCycleWithPrefix(t *testing.T) {
 func TestReverse(t *testing.T) {
 	for i := 1; i < NUM_TESTS; i = i + 1 {
 		head, tail := BuildList(i)
+
+		assert.True(t, Increasing(head))
+
 		reversed := Reverse(head)
 		assert.Nil(t, head.next)
 		assert.Equal(t, reversed.value, tail.value)
-		assert.True(t, Increasing(head))
 		assert.True(t, Decreasing(reversed))
 
 		if i != 1 {
